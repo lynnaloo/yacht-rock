@@ -1,0 +1,42 @@
+# Yacht Rock: React on a Boat
+
+[React](http://facebook.github.io/react/) on [Sails](http://sailsjs.org/).
+
+Riding on the ocean of [Node.js](http://nodejs.org/).
+
+Set Sail
+----
+
+Install [Node.js](http://nodejs.org/)
+
+Install [Sails](http://sailsjs.org/):
+```
+npm install -g sails
+```
+
+### Setup yacht-rock for development:
+```
+git clone https://github.com/lynnaloo/yacht-rock
+cd yacht-rock
+npm install
+```
+
+Start the Sails Server:
+```
+sails lift
+```
+
+Watch the React client folders for changes:
+```
+grunt watch
+```
+
+Anchors aweigh!
+----
+
+Point your browser to `http://localhost:1337` to see the sample React Table!
+
+But Seriously
+----
+
+This setup is a decent starting place to play around with Node.js, Sails.js, and React.js.
