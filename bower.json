@@ -1,0 +1,9 @@
+{
+  "name": "xtuple-accounting",
+  "version": "0.0.1",
+  "dependencies": {
+    "bootstrap": "3.2.0",
+    "components-font-awesome": "4.1.0",
+    "jquery": "2.1.1"
+  }
+}

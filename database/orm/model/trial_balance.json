@@ -1,0 +1,162 @@
+[
+  {
+    "context": "xtuple",
+    "nameSpace": "XM",
+    "type": "Account",
+    "table": "accnt",
+    "isRest": true,
+    "idSequenceName": "accnt_accnt_id_seq",
+    "comment": "Account Map",
+    "privileges": {
+      "all": {
+        "create": false,
+        "read": true,
+        "update": false,
+        "delete": false
+      }
+    },
+    "properties": [
+      {
+        "name": "id",
+        "attr": {
+          "type": "Number",
+          "column": "accnt_id",
+          "isPrimaryKey": true
+        }
+      },
+      {
+        "name": "name",
+        "attr": {
+          "type": "String",
+          "column": "accnt_name",
+          "isNaturalKey": true
+        }
+      },
+      {
+        "name": "description",
+        "attr": {
+          "type": "String",
+          "column": "accnt_descrip"
+        }
+      }
+    ],
+    "isSystem": true
+  },
+  {
+    "context": "xtuple",
+    "nameSpace": "XM",
+    "type": "Period",
+    "table": "period",
+    "isRest": true,
+    "idSequenceName": "period_period_id_seq",
+    "comment": "Period Map",
+    "privileges": {
+      "all": {
+        "create": false,
+        "read": true,
+        "update": false,
+        "delete": false
+      }
+    },
+    "properties": [
+      {
+        "name": "id",
+        "attr": {
+          "type": "Number",
+          "column": "period_id",
+          "isPrimaryKey": true,
+          "isNaturalKey": true
+        }
+      },
+      {
+        "name": "start",
+        "attr": {
+          "type": "Date",
+          "column": "period_start"
+        }
+      },
+      {
+        "name": "end",
+        "attr": {
+          "type": "Date",
+          "column": "period_end"
+        }
+      }
+    ],
+    "isSystem": true
+  },
+  {
+    "context": "xtuple",
+    "nameSpace": "XM",
+    "type": "TrialBalance",
+    "table": "trialbal",
+    "isRest": true,
+    "idSequenceName": "trialbal_trialbal_id_seq",
+    "lockable": false,
+    "comment": "Trial Balance Map",
+    "privileges": {
+      "all": {
+        "create": false,
+        "read": true,
+        "update": false,
+        "delete": false
+      }
+    },
+    "properties": [
+      {
+        "name": "id",
+        "attr": {
+          "type": "Number",
+          "column": "trialbal_id",
+          "isPrimaryKey": true,
+          "isNaturalKey": true
+        }
+      },
+      {
+        "name": "account",
+        "toOne": {
+          "type": "Account",
+          "isNested": true,
+          "column": "trialbal_accnt_id"
+        }
+      },
+      {
+        "name": "period",
+        "toOne": {
+          "type": "Period",
+          "isNested": true,
+          "column": "trialbal_period_id"
+        }
+      },
+      {
+        "name": "beginningBalance",
+        "attr": {
+          "type": "Money",
+          "column": "trialbal_beginning"
+        }
+      },
+      {
+        "name": "endingBalance",
+        "attr": {
+          "type": "Money",
+          "column": "trialbal_ending"
+        }
+      },
+      {
+        "name": "debits",
+        "attr": {
+          "type": "Money",
+          "column": "trialbal_debits"
+        }
+      },
+      {
+        "name": "credits",
+        "attr": {
+          "type": "Money",
+          "column": "trialbal_credits"
+        }
+      }
+    ],
+    "isSystem": true
+  }
+]
