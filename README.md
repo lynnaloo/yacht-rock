@@ -4,7 +4,7 @@
 
 Riding on the ocean of [Node.js](http://nodejs.org/).
 
-Set Sail
+Know the Ropes
 ----
 
 Install [Node.js](http://nodejs.org/)
@@ -21,7 +21,7 @@ cd yacht-rock
 npm install
 ```
 
-Start the Sails Server:
+Get Underway:
 ```
 sails lift
 ```
