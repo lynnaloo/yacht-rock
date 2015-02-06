@@ -31,14 +31,16 @@ Watch the React client folders for changes:
 grunt watch
 ```
 
-Add some of Yacht Rock's Greatest Hits by sending a POST to the API:
-
-
-
 Anchors aweigh!
 ----
 
-Point your browser to `http://localhost:1337` to see the sample React Table!
+Point your browser to `http://localhost:1337` to see Yacht Rock's Greatest Hits!
+
+
+Add some more Yacht Rock hits by sending a POST to the API:
+
+![add-data](https://cloud.githubusercontent.com/assets/1610195/6087223/e8db0ff4-ae16-11e4-88df-21da20b614f0.png)
+
 
 But Seriously
 ----
