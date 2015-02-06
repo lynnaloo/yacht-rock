@@ -1,0 +1,19 @@
+'use strict';
+
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var Constants = require('../constants/AppConstants');
+
+var ActionTypes = Constants.ActionTypes;
+
+var ActionsCreators = {
+
+  receiveRecords: function (records) {
+
+    AppDispatcher.handleServerAction({
+      type: ActionTypes.RECEIVE_RECORDS,
+      records: records
+    });
+  }
+};
+
+module.exports = ActionsCreators;

@@ -1,0 +1,17 @@
+'use strict';
+
+var ActionCreators = require('../actions/ActionCreators'),
+  $ = require('jquery');
+
+module.exports = {
+
+  receiveRecords: function() {
+    $.ajax({
+      url: '/GreatestHit',
+      type: 'GET',
+      dataType: 'json',
+    }).done(function (data) {
+      ActionCreators.receiveRecords(data);
+    });
+  }
+};

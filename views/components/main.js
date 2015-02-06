@@ -1,13 +1,15 @@
-/** @jsx React.DOM */
-  'use strict';
+/**
+ * @jsx React.DOM
+ */
+'use strict';
 
-  var React = require('react'),
-    Backbone = require('backbone'),
-    GreatestHitsTable = require('./GreatestHitsTable');
+var React = require('react'),
+  GreatestHitsTable = require('./GreatestHitsTable'),
+  RecordApi = require('../helpers/RecordApi');
 
-  Backbone.$ = window.$;
+RecordApi.receiveRecords();
 
-  React.renderComponent(
-    <GreatestHitsTable />,
-    document.querySelector('Main')
-  );
+React.renderComponent(
+  <GreatestHitsTable />,
+  document.getElementById('facebook')
+);

@@ -1,23 +1,50 @@
-/** @jsx React.DOM */
-  'use strict';
+/**
+ * @jsx React.DOM
+ */
+'use strict';
 
-  var React = require('react'),
-    Backbone = require('backbone'),
-    Table = require('./Table'),
-    GreatestHitCollection = require('../../models/GreatestHitCollection');
+var React = require('react'),
+  Table = require('./Table'),
+  RecordStore = require('../stores/RecordStore'),
+  ActionCreators = require('../actions/ActionCreators');
 
-  Backbone.$ = window.$;
+var _getStateFromStores = function () {
+  return RecordStore.getAllRecords();
+};
 
-  var GreatestHitsTable = React.createClass({
+var GreatestHitsTable = React.createClass({
 
-    render: function () {
-      var columns = ['name', 'artist', 'year'],
-        headers = ['Title', 'Artist', 'Year'];
-      return (
-        <Table Collection={GreatestHitCollection} cols={columns}
-          headers={headers} title="Songs"/>
-      );
-    }
-  });
+  componentDidMount: function () {
+    RecordStore.addChangeListener(this._onChange);
+  },
 
-  module.exports = GreatestHitsTable;
+  componentWillUnmount: function () {
+    RecordStore.removeChangeListener(this._onChange);
+  },
+
+  _onChange: function () {
+    this.setState({
+      data: _getStateFromStores,
+      message: ''
+    });
+  },
+
+  getRecords: function () {
+    this.setState({data: _getStateFromStores, message: ''});
+  },
+
+  componentWillMount: function () {
+    this.getRecords();
+    setInterval(this.getRecords, this.props.pollInterval);
+  },
+
+  render: function () {
+    var columns = ['name', 'artist', 'year'],
+      headers = ['Title', 'Artist', 'Year'];
+    return (
+      <Table cols={columns} headers={headers} title="Songs"/>
+    );
+  }
+});
+
+module.exports = GreatestHitsTable;
