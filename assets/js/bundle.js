@@ -36645,16 +36645,17 @@ var TableItem = React.createClass({displayName: 'TableItem',
 
   getDefaultProps: function () {
     return {
-      data: {}
+      data: {},
+      attrs: []
     };
   },
 
   render: function() {
     var item = this.props.data,
-      attributes = _.values(item),
+      attributes = this.props.attrs,
       cols = attributes.map(function (col, i) {
         return (
-          React.DOM.td({key: i, className: "col-md-1"}, col)
+          React.DOM.td({key: i, className: "col-md-1"}, item[col])
         );
       }, this);
 

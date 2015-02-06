@@ -18,16 +18,17 @@ var TableItem = React.createClass({
 
   getDefaultProps: function () {
     return {
-      data: {}
+      data: {},
+      attrs: []
     };
   },
 
   render: function() {
     var item = this.props.data,
-      attributes = _.values(item),
+      attributes = this.props.attrs,
       cols = attributes.map(function (col, i) {
         return (
-          <td key={i} className="col-md-1">{col}</td>
+          <td key={i} className="col-md-1">{item[col]}</td>
         );
       }, this);
 
