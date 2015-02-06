@@ -14,14 +14,16 @@ Install [Sails](http://sailsjs.org/):
 npm install -g sails
 ```
 
-### Setup yacht-rock for development:
+Setup yacht-rock for development:
 ```
 git clone https://github.com/lynnaloo/yacht-rock
 cd yacht-rock
 npm install
 ```
 
-Get Underway:
+Get Underway
+----
+
 ```
 sails lift
 ```
@@ -36,6 +38,8 @@ Anchors aweigh!
 
 Point your browser to `http://localhost:1337` to see Yacht Rock's Greatest Hits!
 
+Outward bound
+----
 
 Add some more Yacht Rock hits by sending a POST to the API:
 
