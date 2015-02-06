@@ -1,6 +1,10 @@
-// __tests__/test.js
+/** @jsx React.DOM */
 
-jest.dontMock('../views/components/main.js');
+"use strict";
+
+// __tests__/control-test.js
+jest.dontMock('../views/components');
+jest.dontMock('sails');
 
 describe('test', function() {
  it('adds 1 + 2 to equal 3', function() {
