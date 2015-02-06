@@ -1,7 +1,7 @@
 {
   "name": "yacht-rock",
   "description": "Yacht Rock: React on a Boat",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": "react, flux, browserify, sails",
   "main": "app.js",
   "repository": {
