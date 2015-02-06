@@ -36442,9 +36442,9 @@ module.exports = require('./lib/React');
 },{"./lib/React":37}],169:[function(require,module,exports){
 'use strict';
 
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var Constants = require('../constants/AppConstants');
-
+var AppDispatcher = require('../dispatcher/AppDispatcher'),
+  Constants = require('../constants/AppConstants');
+  
 var ActionTypes = Constants.ActionTypes;
 
 var ActionsCreators = {
@@ -36477,6 +36477,10 @@ var _getStateFromStores = function () {
 
 var GreatestHitsTable = React.createClass({displayName: 'GreatestHitsTable',
 
+  getInitialState: function () {
+    return {data: _getStateFromStores(), message: ''};
+  },
+
   componentDidMount: function () {
     RecordStore.addChangeListener(this._onChange);
   },
@@ -36487,25 +36491,16 @@ var GreatestHitsTable = React.createClass({displayName: 'GreatestHitsTable',
 
   _onChange: function () {
     this.setState({
-      data: _getStateFromStores,
+      data: _getStateFromStores(),
       message: ''
     });
-  },
-
-  getRecords: function () {
-    this.setState({data: _getStateFromStores, message: ''});
-  },
-
-  componentWillMount: function () {
-    this.getRecords();
-    setInterval(this.getRecords, this.props.pollInterval);
   },
 
   render: function () {
     var columns = ['name', 'artist', 'year'],
       headers = ['Title', 'Artist', 'Year'];
     return (
-      Table({cols: columns, headers: headers, title: "Songs"})
+      Table({cols: columns, headers: headers, data: this.state.data, message: this.state.message, title: "Songs"})
     );
   }
 });
@@ -36527,8 +36522,6 @@ var React = require('react/addons'),
   defaultCols = [];
 
 var Table = React.createClass({displayName: 'Table',
-  mixins: [TableMixin], // Mixin common table logic
-
   /*
     Validation to ensure that the properties sent from the
       parent component is the correct type.
@@ -36544,26 +36537,22 @@ var Table = React.createClass({displayName: 'Table',
     return {
       title: defaultTitle,
       pollInterval: defaultPoll,
-      cols: defaultCols
+      cols: defaultCols,
+      data: [],
+      message: ''
     };
   },
 
-  getInitialState: function () {
-    return {data : [], message : ''};
-  },
-
   render: function () {
-    var models = this.state.data,
+    var models = this.props.data,
       headers = this.props.headers || this.props.cols,
-      alert = React.DOM.div({className: "alert alert-danger", role: "alert"}, React.DOM.strong(null, this.state.message)),
+      alert = React.DOM.div({className: "alert alert-danger", role: "alert"}, React.DOM.strong(null, this.props.message)),
       tableRows = models.map(function (model, i) {
         return (
           TableItem({
             key: i, 
             data: model, 
-            attrs: this.props.cols, 
-            onDelete: this.deleteModel.bind(this, model), 
-            onEdit: this.editModel.bind(this, model)}
+            attrs: this.props.cols}
           )
         );
       }, this);
@@ -36581,7 +36570,7 @@ var Table = React.createClass({displayName: 'Table',
             )
           )
         ), 
-         this.state.message ? alert : ''
+         this.props.message ? alert : ''
       )
     );
   }
@@ -36641,7 +36630,8 @@ module.exports = TableHeader;
  */
 'use strict';
 
-var React = require('react/addons');
+var React = require('react/addons'),
+  _ = require('lodash');
 
 var TableItem = React.createClass({displayName: 'TableItem',
 
@@ -36661,16 +36651,16 @@ var TableItem = React.createClass({displayName: 'TableItem',
 
   render: function() {
     var item = this.props.data,
-      attrs = this.props.attrs || [],
-      attributes = attrs.map(function (col, i) {
+      attributes = _.values(item),
+      cols = attributes.map(function (col, i) {
         return (
-          React.DOM.td({key: i, className: "col-md-1"}, item.get(col))
+          React.DOM.td({key: i, className: "col-md-1"}, col)
         );
       }, this);
 
     return (
       React.DOM.tr(null, 
-        attributes
+        cols
       )
     );
   }
@@ -36678,7 +36668,7 @@ var TableItem = React.createClass({displayName: 'TableItem',
 
 module.exports = TableItem;
 
-},{"react/addons":7}],174:[function(require,module,exports){
+},{"lodash":6,"react/addons":7}],174:[function(require,module,exports){
 /**
  * @jsx React.DOM
  */
@@ -36690,7 +36680,7 @@ var React = require('react'),
 
 RecordApi.receiveRecords();
 
-React.renderComponent(
+React.render(
   GreatestHitsTable(null),
   document.getElementById('facebook')
 );

@@ -2,15 +2,15 @@
   "name": "yacht-rock",
   "description": "Yacht Rock: React on a Boat",
   "version": "0.0.1",
-  "keywords": "react, backbone, browserify, sails",
+  "keywords": "react, flux, browserify, sails",
   "main": "app.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/lynnaloo/yacht-rock.git"
   },
-  "license": "CPAL",
+  "license": "MIT",
   "author": {
-    "name": "xTuple"
+    "name": "Linda Nichols"
   },
   "engines": {
     "node": "^0.10.31"

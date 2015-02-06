@@ -14,6 +14,10 @@ var _getStateFromStores = function () {
 
 var GreatestHitsTable = React.createClass({
 
+  getInitialState: function () {
+    return {data: _getStateFromStores(), message: ''};
+  },
+
   componentDidMount: function () {
     RecordStore.addChangeListener(this._onChange);
   },
@@ -24,25 +28,16 @@ var GreatestHitsTable = React.createClass({
 
   _onChange: function () {
     this.setState({
-      data: _getStateFromStores,
+      data: _getStateFromStores(),
       message: ''
     });
-  },
-
-  getRecords: function () {
-    this.setState({data: _getStateFromStores, message: ''});
-  },
-
-  componentWillMount: function () {
-    this.getRecords();
-    setInterval(this.getRecords, this.props.pollInterval);
   },
 
   render: function () {
     var columns = ['name', 'artist', 'year'],
       headers = ['Title', 'Artist', 'Year'];
     return (
-      <Table cols={columns} headers={headers} title="Songs"/>
+      <Table cols={columns} headers={headers} data={this.state.data} message={this.state.message} title="Songs"/>
     );
   }
 });

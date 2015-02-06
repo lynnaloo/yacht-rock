@@ -9,7 +9,7 @@ var React = require('react'),
 
 RecordApi.receiveRecords();
 
-React.renderComponent(
+React.render(
   <GreatestHitsTable />,
   document.getElementById('facebook')
 );

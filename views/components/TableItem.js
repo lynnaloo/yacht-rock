@@ -3,7 +3,8 @@
  */
 'use strict';
 
-var React = require('react/addons');
+var React = require('react/addons'),
+  _ = require('lodash');
 
 var TableItem = React.createClass({
 
@@ -23,16 +24,16 @@ var TableItem = React.createClass({
 
   render: function() {
     var item = this.props.data,
-      attrs = this.props.attrs || [],
-      attributes = attrs.map(function (col, i) {
+      attributes = _.values(item),
+      cols = attributes.map(function (col, i) {
         return (
-          <td key={i} className="col-md-1">{item.get(col)}</td>
+          <td key={i} className="col-md-1">{col}</td>
         );
       }, this);
 
     return (
       <tr>
-        {attributes}
+        {cols}
       </tr>
     );
   }

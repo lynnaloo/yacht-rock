@@ -12,8 +12,6 @@ var React = require('react/addons'),
   defaultCols = [];
 
 var Table = React.createClass({
-  mixins: [TableMixin], // Mixin common table logic
-
   /*
     Validation to ensure that the properties sent from the
       parent component is the correct type.
@@ -29,26 +27,22 @@ var Table = React.createClass({
     return {
       title: defaultTitle,
       pollInterval: defaultPoll,
-      cols: defaultCols
+      cols: defaultCols,
+      data: [],
+      message: ''
     };
   },
 
-  getInitialState: function () {
-    return {data : [], message : ''};
-  },
-
   render: function () {
-    var models = this.state.data,
+    var models = this.props.data,
       headers = this.props.headers || this.props.cols,
-      alert = <div className="alert alert-danger" role="alert"><strong>{this.state.message}</strong></div>,
+      alert = <div className="alert alert-danger" role="alert"><strong>{this.props.message}</strong></div>,
       tableRows = models.map(function (model, i) {
         return (
           <TableItem
             key={i}
             data={model}
             attrs={this.props.cols}
-            onDelete={this.deleteModel.bind(this, model)}
-            onEdit={this.editModel.bind(this, model)}
           />
         );
       }, this);
@@ -66,7 +60,7 @@ var Table = React.createClass({
             </table>
           </div>
         </div>
-        { this.state.message ? alert : '' }
+        { this.props.message ? alert : '' }
       </div>
     );
   }
