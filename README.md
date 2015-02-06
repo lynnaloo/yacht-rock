@@ -31,6 +31,10 @@ Watch the React client folders for changes:
 grunt watch
 ```
 
+Add some of Yacht Rock's Greatest Hits by sending a POST to the API:
+
+
+
 Anchors aweigh!
 ----
 
