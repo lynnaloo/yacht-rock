@@ -14,14 +14,16 @@ Install [Sails](http://sailsjs.org/):
 npm install -g sails
 ```
 
-### Setup yacht-rock for development:
+Setup yacht-rock for development:
 ```
 git clone https://github.com/lynnaloo/yacht-rock
 cd yacht-rock
 npm install
 ```
 
-Get Underway:
+Get Underway
+----
+
 ```
 sails lift
 ```
@@ -34,7 +36,15 @@ grunt watch
 Anchors aweigh!
 ----
 
-Point your browser to `http://localhost:1337` to see the sample React Table!
+Point your browser to `http://localhost:1337` to see Yacht Rock's Greatest Hits!
+
+Outward bound
+----
+
+Add some more Yacht Rock hits by sending a POST to the API:
+
+![add-data](https://cloud.githubusercontent.com/assets/1610195/6087223/e8db0ff4-ae16-11e4-88df-21da20b614f0.png)
+
 
 But Seriously
 ----
