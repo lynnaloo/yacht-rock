@@ -8,12 +8,7 @@
 module.exports = {
 
   attributes: {
-
-    "id": {
-      type: "integer",
-      autoIncrement: true
-    },
-    "name": {
+    name": {
       type: 'string'
     },
     "artist": {
