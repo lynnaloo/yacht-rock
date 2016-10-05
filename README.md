@@ -1,3 +1,5 @@
+__Sadly, yacht-rock is no longer sailing. If you want to take over this project and update the versions and Flux -> Redux (or whatever), please file an issue!__
+
 # Yacht Rock: React on a Boat
 
 [React](http://facebook.github.io/react/) on [Sails](http://sailsjs.org/).
